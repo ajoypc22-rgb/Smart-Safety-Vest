@@ -53,6 +53,18 @@ datasheets/
 - Abdullah Al Mamun
 - Abdul Halim
 
+## Project Progress
 
-## License
-PCIU
+| Phase                           | Status        |
+| ------------------------------- | ------------- |
+| Phase 01 - ESP32 Setup          | ✅ Completed   |
+| Phase 02 - BME280               | ⏳ In Progress |
+| Phase 03 - MPU6050              | ⬜ Pending     |
+| Phase 04 - GPS                  | ⬜ Pending     |
+| Phase 05 - LoRa                 | ⬜ Pending     |
+| Phase 06 - Power System         | ⬜ Pending     |
+| Phase 07 - SOS Alert            | ⬜ Pending     |
+| Phase 08 - Final Integration    | ⬜ Pending     |
+| Phase 09 - Testing              | ⬜ Pending     |
+| Phase 10 - Thesis Documentation | ⬜ Pending     |
+
