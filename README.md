@@ -47,7 +47,12 @@ datasheets/
 - [ ] Testing & Validation
 
 ## Team
-- Add your names here.
+- Ajoy Das
+- Shafiul Azam
+- Ritu Biswas
+- Abdullah Al Mamun
+- Abdul Halim
+
 
 ## License
-MIT
+PCIU
