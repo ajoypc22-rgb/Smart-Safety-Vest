@@ -59,7 +59,7 @@ datasheets/
 | ------------------------------- | ------------- |
 | Phase 01 - ESP32 Setup          | ✅ Completed   |
 | Phase 02 - BME280               | ✅ Completed |
-| Phase 03 - MPU6050              | ⬜ Pending     |
+| Phase 03 - MPU6050              | ⏳ In Progress     |
 | Phase 04 - GPS                  | ⬜ Pending     |
 | Phase 05 - LoRa                 | ⬜ Pending     |
 | Phase 06 - Power System         | ⬜ Pending     |
