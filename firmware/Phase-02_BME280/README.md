@@ -1,13 +1,31 @@
-# Phase-02 BME280
+# Phase 02 - BME280 Environmental Monitoring
 
 ## Objective
+Interface the BME280 sensor with ESP32 using the I2C protocol to measure environmental parameters.
 
-## Components
+## Hardware
+- ESP32 DevKit V1
+- BME280 Sensor
 
-## Wiring
+## Pin Connection
 
-## Code
+| BME280 | ESP32 |
+|---------|--------|
+| VCC | 3.3V |
+| GND | GND |
+| SDA | GPIO21 |
+| SCL | GPIO22 |
 
-## Test Results
+## Measured Parameters
 
-## Notes
+- Temperature
+- Humidity
+- Atmospheric Pressure
+
+## Test Result
+
+The sensor was successfully initialized and all environmental parameters were read correctly.
+
+## Status
+
+✅ Completed
