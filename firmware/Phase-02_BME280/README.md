@@ -13,8 +13,8 @@ Interface the BME280 sensor with ESP32 using the I2C protocol to measure environ
 |---------|--------|
 | VCC | 3.3V |
 | GND | GND |
-| SDA | GPIO21 |
-| SCL | GPIO22 |
+| SDA | D21 |
+| SCL | D22 |
 
 ## Measured Parameters
 
