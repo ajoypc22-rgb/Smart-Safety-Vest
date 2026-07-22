@@ -57,16 +57,16 @@ datasheets/
 
 | Phase                           | Status        |
 | ------------------------------- | ------------- |
-| Phase 01 - ESP32 Setup          | ✅ Completed   |
-| Phase 02 - BME280               | ✅ Completed |
-| Phase 03 - MPU6050              | ✅ Completed     |
-| Phase 04 - GPS                  | ⏳ In Progress     |
-| Phase 05 - LoRa                 | ⬜ Pending     |
-| Phase 06 - Power System         | ⬜ Pending     |
-| Phase 07 - SOS Alert            | ⬜ Pending     |
-| Phase 08 - Final Integration    | ⬜ Pending     |
-| Phase 09 - Testing              | ⬜ Pending     |
-| Phase 10 - Thesis Documentation | ⬜ Pending     |
+| Phase 01 - Project Initialization           | ✅ Completed   |
+| Phase 02 - BME280 Integartion              | ✅ Completed |
+| Phase 03 - MPU6050 Integration             | ✅ Completed     |
+| Phase 04 - GPS Module Integration                 | ⏳ In Progress     |
+| Phase 05 - LoRa Integration                | ⬜ Pending     |
+| Phase 06 - IoT Cloud Platform         | ⬜ Pending     |
+| Phase 07 - Mobile Application            | ⬜ Pending     |
+| Phase 08 - Smart Safety Feature Integration    | ⬜ Pending     |
+| Phase 09 - Full System Integration              | ⬜ Pending     |
+| Phase 10 - Final Product Release | ⬜ Pending     |
 
 <img width="1024" height="1536" alt="ChatGPT Image Jul 22, 2026, 05_30_40 PM (1)" src="https://github.com/user-attachments/assets/4162c9a6-17cc-40ec-9aae-5b650cc672cf" />
 
