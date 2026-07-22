@@ -68,6 +68,7 @@ datasheets/
 | Phase 09 - Testing              | ⬜ Pending     |
 | Phase 10 - Thesis Documentation | ⬜ Pending     |
 
-<img width="1024" height="1536" alt="ChatGPT Image Jul 22, 2026, 05_13_41 PM" src="https://github.com/user-attachments/assets/95a597b1-3f27-4350-bf55-63471e46b41c" />
+<img width="1024" height="1536" alt="ChatGPT Image Jul 22, 2026, 05_30_40 PM (1)" src="https://github.com/user-attachments/assets/4162c9a6-17cc-40ec-9aae-5b650cc672cf" />
+
 
 
