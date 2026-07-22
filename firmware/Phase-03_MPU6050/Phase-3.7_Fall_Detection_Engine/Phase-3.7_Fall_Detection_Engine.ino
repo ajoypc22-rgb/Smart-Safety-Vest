@@ -1,82 +1,10 @@
 /*
  * Project : Smart Safety Vest
- * Firmware: Smart_Safety_Vest.ino
+ * Firmware: Phase-3.7_Fall_Detection_Engine.ino
  * Version : v2.1
  * Module  : Motion State Machine + Fall Detection (Timing Fix)
  * Author  : Ajoy Das Team
  *
- * v2.1 Changelog (root cause of MISSED falls found - timing, not threshold):
- * - Reported issue: real falls still not triggering FALL DETECTED
- *   even after v2.0 threshold correction.
- * - Root cause found by tracing the serial log: in more than one
- *   real-fall attempt, FreeFall+Impact triggered correctly, but the
- *   worker's body took 2.5-3s of stumbling/rolling before settling
- *   into a stable lying position. TiltPitch crossed the 70-degree
- *   LYING_ANGLE right around the same moment FALL_TIMEOUT (3000ms)
- *   expired and reset all flags - so the required extra 1500ms
- *   (LYING_CONFIRM_TIME) to confirm lying never had a chance to run.
- *   A real fall is rarely instantaneous; the old 3000ms budget left
- *   almost no slack once the 1500ms lying-confirmation cost is
- *   subtracted.
- * - FALL_TIMEOUT: 3000 -> 6000ms. This gives roughly 4.5s for the
- *   free-fall-to-settled-lying sequence to complete, plus the 1.5s
- *   confirmation, before the window closes.
- *
- * v2.0 Changelog (CORRECTION - v1.8 tuning was too aggressive):
- * - Reported issue: real falls were being MISSED (no FALL DETECTED).
- * - Root cause: v1.8 tightened FREE_FALL_THRESHOLD to 0.50 and
- *   IMPACT_THRESHOLD to 2.2 based on normal-movement noise concerns.
- *   But re-checking the actual confirmed real-fall test log showed
- *   genuine falls with a free-fall dip as high as 0.65g and an
- *   impact spike as low as 1.96g - both inside the "safe" zone of
- *   the v1.8 thresholds, so those falls would no longer trigger.
- * - FREE_FALL_THRESHOLD: 0.50 -> 0.80 (above the highest confirmed
- *   real dip of 0.65g, with margin)
- * - IMPACT_THRESHOLD: 2.2 -> 1.8 (below the lowest confirmed real
- *   impact of 1.96g, with margin)
- * - Why this is still safe: the bending/kneeling stress test log
- *   showed tiltPitch reaching as far as -88 degrees during normal
- *   fast movement, but LYING never confirmed because it never held
- *   still for the full 1.5s. That confirms false-alarm protection
- *   comes from the Lying confirmation timer, not from tight
- *   FreeFall/Impact thresholds - so loosening these two is low risk.
- *
- * v1.9 Changelog:
- * - DIAGNOSTIC: Uncommented TiltPitch/TiltRoll serial print.
- *   Reported issue: Lying never triggers from BACKWARD_LEAN, only
- *   from FORWARD_LEAN. Root cause can't be confirmed without seeing
- *   the actual tilt angle (in degrees) reached during a backward
- *   lean/lie-down test, since LYING_ANGLE = 70.0 depends on tiltPitch
- *   or tiltRoll actually crossing that value. This print exposes
- *   those numbers so we can see how close backward motion gets to 70.
- *
- * v1.7 Changelog:
- * - FIX: updateFallDetection() no longer force-resets lyingDetected.
- *        Previously it wiped lyingDetected back to false every loop
- *        whenever no fall sequence was active (fallStartTime == 0),
- *        right after detectLyingPosition() had set it correctly.
- *        This corrupted the "Lying" debug flag and could interfere
- *        with future logic that reads lyingDetected directly.
- *        detectLyingPosition() is now the single owner of this flag.
- * - FIX: Comment corrected (1 second -> 1.5 seconds) to match
- *        LYING_CONFIRM_TIME = 1500.
- *
- * v1.8 Changelog (threshold tuning based on real serial log data):
- * - FREE_FALL_THRESHOLD: 0.70 -> 0.50
- *   Real captured falls showed dips as low as 0.22-0.65g, but so did
- *   ordinary quick lean/turn movements. 0.50 reduces how often normal
- *   work motion is flagged as free-fall, while still catching every
- *   confirmed fall dip in the test log that went below ~0.5g.
- * - IMPACT_THRESHOLD: 1.7 -> 2.2
- *   Real fall impacts in the log landed mostly at 1.9g-3.5g. Ordinary
- *   lean movements were also seen spiking past 1.7g (sometimes even
- *   past 2.2g), so this alone will not fully separate the two -
- *   the Lying confirmation timer remains the main safety net and
- *   worked perfectly in testing (zero false FALL DETECTED events).
- *   Do not rely on FreeFall/Impact thresholds alone; keep validating
- *   with real bending/kneeling tests (see note below).
- */
-
 #include <Wire.h>
 #include <MPU6050.h>
 #include <math.h>
